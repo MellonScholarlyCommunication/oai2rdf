@@ -29,6 +29,10 @@
     "ldn"
   ],
   "author": "Patrick Hochstenbach <Patrick.Hochstenbach@UGent.be>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MellonScholarlyCommunication/oai2rdf.git"
+  },
   "bin": {
     "oai2rdf": "dist/client.js"
   },
