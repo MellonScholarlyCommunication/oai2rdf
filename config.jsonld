@@ -1,0 +1,24 @@
+{
+    "@context": [
+      "https://linkedsoftwaredependencies.org/bundles/npm/componentsjs/^5.0.0/components/context.jsonld",
+      "https://linkedsoftwaredependencies.org/bundles/npm/oai2rdf/^0.0.0/components/context.jsonld"
+    ],
+    "@graph": [
+      {
+        "@id": "https://repository.ubn.ru.nl/oai/request",
+        "@type": "GetRecordResolver",
+        "baseUrl": "https://repository.ubn.ru.nl/oai/request",
+        "recordUrlPrefix": "https://repository.ubn.ru.nl/handle/",
+        "landingPagePrefix": "https://repository.ubn.ru.nl/handle/",
+        "fileUrlPrefix": "https://repository.ubn.ru.nl//bitstream/handle"
+      },
+      {
+        "@id": "https://pub.uni-bielefeld.de/oai",
+        "@type": "GetRecordResolver",
+        "baseUrl": "https://pub.uni-bielefeld.de/oai",
+        "recordUrlPrefix": "oai:pub.uni-bielefeld.de:" ,
+        "landingPagePrefix": "https://pub.uni-bielefeld.de/record/",
+        "fileUrlPrefix": "https://pub.uni-bielefeld.de/download/"
+      }
+    ]
+}

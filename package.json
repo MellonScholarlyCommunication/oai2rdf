@@ -1,0 +1,55 @@
+{
+  "name": "oai2rdf",
+  "version": "0.1.0",
+  "lsd:module": true,
+  "description": "A OAI-PMH to RDF transformer",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "components",
+    "dist/**/*.d.ts",
+    "dist/**/*.js",
+    "dist/**/*.js.map"
+  ],
+  "scripts": {
+    "build": "yarn build:ts && yarn build:components",
+    "build:ts": "tsc; chmod 755 dist/*.js",
+    "build:components": "componentsjs-generator -s dist -r oain218",
+    "prepare": "yarn build",
+    "oai:biblio": "node dist/client.js --info --from '2023-01-01' --until '2023-01-31' --max-no-del 10 --setSpec 'allFtxt' https://biblio.ugent.be/oai",
+    "oai:radboud": "node dist/client.js --info --from '2023-01-01' --until '2023-01-31' --max-no-del 10 --setSpec 'col_2066_119644' https://repository.ubn.ru.nl/oai/request",
+    "oai:hal": "node dist/client.js --info --max-no-del 10 --setSpec 'collection:SCPO_OA' https://api.archives-ouvertes.fr/oai/hal/",
+    "oai:bielefeld": "node dist/client.js --info --max-no-del 10 --setSpec 'open_access' https://pub.uni-bielefeld.de/oai",
+    "clean": "rm in/* && rm ./cache.db"
+  },
+  "keywords": [
+    "oai-pmh",
+    "event",
+    "notifications",
+    "ldn"
+  ],
+  "author": "Patrick Hochstenbach <Patrick.Hochstenbach@UGent.be>",
+  "bin": {
+    "oai2rdf": "dist/client.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@xmldom/xmldom": "^0.8.7",
+    "commander": "^10.0.1",
+    "isomorphic-fetch": "^3.0.0",
+    "log4js": "^6.9.1",
+    "md5": "^2.3.0",
+    "n3": "^1.16.4",
+    "node-html-parser": "^6.1.5",
+    "oai-pmh": "^2.0.3",
+    "sqlite3": "^5.1.6",
+    "xmldom": "^0.6.0",
+    "xpath": "^0.0.32"
+  },
+  "devDependencies": {
+    "@types/md5": "^2.3.2",
+    "@types/n3": "^1.10.4",
+    "componentsjs-generator": "^3.1.0",
+    "typescript": "^5.0.4"
+  }
+}
