@@ -19,7 +19,7 @@ export class GetRecordResolver extends AbstractRecordResolver {
         this.metadataPrefix  = metadataPrefix;
         this.recordUrlPrefix = recordUrlPrefix;
         this.landingPagePrefix = landingPagePrefix;
-        this.fileUrlPrefix   = fileUrlPrefix;
+        this.fileUrlPrefix = fileUrlPrefix;
     }
 
     async resolve(oai_id: string) : Promise<string> {
@@ -50,9 +50,10 @@ export class GetRecordResolver extends AbstractRecordResolver {
                 record.year = dc['dc:date'];
            }
            if (dc['dc:identifier'] && Array.isArray(dc['dc:identifier'])) {
-                
+               
+                const re = new RegExp(this.fileUrlPrefix);
                 dc['dc:identifier'].forEach( async (item) => {
-                    if (item.startsWith(this.fileUrlPrefix)) {
+                    if (item.match(re)) {
                         record.file = {
                             id: item ,
                             mediaType: 'unknown/unknown' ,
@@ -84,14 +85,26 @@ export class GetRecordResolver extends AbstractRecordResolver {
     }
 
     async guessMediaType(url: string) : Promise<string | null> {
-        const response = await fetch(url , {
-            method: 'HEAD'
-        });
+        try {
+            this.logger.debug(`guessing content-type of ${url}`);
+            const response = await fetch(url , {
+                method: 'HEAD'
+            });
 
-        if (! response.ok) {
+            if (! response.ok) {
+                this.logger.error(`failed to guess content-type of ${url}`);
+                return null;
+            }
+
+            const type = response.headers.get('Content-Type');
+
+            this.logger.debug(`content-type: ${type}`);
+
+            return type;
+        }
+        catch (e) {
+            this.logger.error(`failed to guess content-type of ${url}`);
             return null;
         }
-
-        return response.headers.get('Content-Type');
     }
 }
