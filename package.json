@@ -1,6 +1,6 @@
 {
   "name": "oai2rdf",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "lsd:module": true,
   "description": "A OAI-PMH to RDF transformer",
   "main": "dist/index.js",
