@@ -16,7 +16,6 @@
     "build:ts": "tsc; chmod 755 dist/*.js",
     "build:components": "componentsjs-generator -s dist -r oain218",
     "prepare": "yarn build",
-    "oai:biblio": "node dist/client.js --info --from '2023-01-01' --until '2023-01-31' --max-no-del 10 --setSpec 'allFtxt' https://biblio.ugent.be/oai",
     "oai:radboud": "node dist/client.js --info --from '2023-01-01' --until '2023-01-31' --max-no-del 10 --setSpec 'col_2066_119644' https://repository.ubn.ru.nl/oai/request",
     "oai:hal": "node dist/client.js --info --max-no-del 10 --setSpec 'collection:SCPO_OA' https://api.archives-ouvertes.fr/oai/hal/",
     "oai:bielefeld": "node dist/client.js --info --max-no-del 10 --setSpec 'open_access' https://pub.uni-bielefeld.de/oai",

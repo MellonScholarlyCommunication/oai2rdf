@@ -66,6 +66,24 @@ oai2rdf --info --from '2023-01-01' --until '2023-01-31' --max-no-del 10 --setSpe
 To fetch all not deleted records, the command above needs to be executed multiple times until
 no new records are produced.
 
+## Sample produced RDF document
+
+```
+@prefix as: <https://www.w3.org/ns/activitystreams#>.
+@prefix ietf: <http://www.iana.org/assignments/relation/>.
+@prefix sorg: <https://schema.org/>.
+@prefix ore: <http://www.openarchives.org/ore/terms/>.
+
+_:n3-5 a sorg:AboutPage;
+    ore:isDescribedBy <https://pub.uni-bielefeld.de/record/2982899>;
+    as:summary "Robust Feature Selection and Robust Training to Cope with Hyperspectral Sensor Shifts";
+    sorg:datePublished "2023";
+    as:url <https://pub.uni-bielefeld.de/download/2982899/2982900>.
+<https://pub.uni-bielefeld.de/download/2982899/2982900> as:mediaType "application/pdf";
+    <http://purl.org/dc/terms/accessRights> "open";
+    a as:Article, sorg:ScholarlyArticle.
+```
+
 ## Options
 
 ##### -V | --version 
