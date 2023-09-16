@@ -8,7 +8,7 @@
         "@id": "https://repository.ubn.ru.nl/oai/request",
         "@type": "GetRecordResolver",
         "baseUrl": "https://repository.ubn.ru.nl/oai/request",
-        "recordUrlPrefix": "https://repository.ubn.ru.nl/handle/",
+        "recordUrlPrefix": "oai:repository.ubn.ru.nl:",
         "landingPagePrefix": "https://repository.ubn.ru.nl/handle/",
         "fileUrlPrefix": "https://repository.ubn.ru.nl//bitstream/handle"
       },
